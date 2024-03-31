@@ -1,6 +1,6 @@
 .fileDisplay {
-    &, * { max-width: 600px; }
-    
+    &, * { max-width: min(600px, 100%); }
+
     display: flex;
     justify-items: center;
     flex-direction: column;

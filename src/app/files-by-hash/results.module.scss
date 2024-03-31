@@ -1,5 +1,6 @@
 .infoText {
     margin: 16px 0;
+    margin-right: 24px;
     font-size: 1.4rem;
     font-weight: 500;
     color: #ddd;
@@ -7,6 +8,7 @@
     padding: 12px 24px 12px 20px;
     border-radius: 16px;
     width: max-content;
+    max-width: calc(100% - 24px);
 
     > svg {
         margin-right: 12px;

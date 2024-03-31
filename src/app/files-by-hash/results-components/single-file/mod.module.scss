@@ -12,7 +12,6 @@
     }
 
     > dl {
-        max-width: max-content;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -22,7 +21,7 @@
 $imageWidth: 400px;
 
 .modBannerAndNameWithIdAndLatestVersionCombo {
-    max-width: $imageWidth * 1.5;
+    max-width: min($imageWidth * 1.5, 100%);
 
     display: grid;
     grid-template-columns: 1fr;
@@ -33,7 +32,7 @@ $imageWidth: 400px;
 .modBanner {
     > dt { display: none; }
     > dd {
-        width: min($imageWidth, 100vw - 128px);
+        width: min($imageWidth, 100%);
         max-height: $imageWidth * 9/16;
         > img {
             width: 100%;
@@ -93,7 +92,7 @@ $imageWidth: 400px;
 
 
 .modSummary {
-    max-width: $imageWidth * 1.5;
+    max-width: min($imageWidth * 1.5, 100%);
     > dt > h5 {
         margin: 0;
         font-size: 1.1rem;
