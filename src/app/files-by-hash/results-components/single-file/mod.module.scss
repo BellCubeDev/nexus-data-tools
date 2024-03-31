@@ -6,6 +6,8 @@
     justify-content: center;
     align-items: center;
 
+    &, * { max-width: min(600px, 100%); }
+
     > h3 {
         margin: 0;
         font-size: 1.8rem;
@@ -15,14 +17,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        flex-wrap: nowrap;
+
+        justify-content: space-between;
     }
 }
 
 $imageWidth: 400px;
 
 .modBannerAndNameWithIdAndLatestVersionCombo {
-    max-width: min($imageWidth * 1.5, 100%);
-
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
@@ -92,7 +95,6 @@ $imageWidth: 400px;
 
 
 .modSummary {
-    max-width: min($imageWidth * 1.5, 100%);
     > dt > h5 {
         margin: 0;
         font-size: 1.1rem;

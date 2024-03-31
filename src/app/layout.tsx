@@ -16,7 +16,10 @@ const roboto = Roboto({
 
 // Exported directly in page.js as well to avoid a strange bugs or two
 export const metadata: Metadata = {
-    title: "Nexus Data Tools",
+    title: {
+        template: "%s | Nexus Data Tools",
+        default: "~~ERROR~~ | Nexus Data Tools",
+    },
     description: "A collection of tools for gathering, visualizing, and manipulating data from Nexus Mods",
     applicationName: "Nexus Data Tools",
     authors: [{

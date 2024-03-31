@@ -1,12 +1,12 @@
 .fileDisplay {
-    &, * { max-width: min(600px, 100%); }
-
     display: flex;
     justify-items: center;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+
+    &, * { max-width: min(600px, 100%); }
 
     > h3 {
         margin: 0;
@@ -15,11 +15,12 @@
 
     > dl {
         display: flex;
-        gap: 16px;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
+
+        gap: 16px;
+        justify-content: space-between;
 
         dt {
             font-weight: 700;
