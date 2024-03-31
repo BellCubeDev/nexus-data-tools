@@ -1,0 +1,65 @@
+.fileDisplay {
+    &, * { max-width: 600px; }
+    
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    > h3 {
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    > dl {
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        dt {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+
+.fileName {
+
+}
+
+
+.fileSize {
+
+}
+
+
+.fileSizeAndVersionCombo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 32px;
+}
+
+
+.fileVersion {
+
+}
+
+
+.fileUploadTime {
+
+}
+
+
+.fileDescription {
+
+}

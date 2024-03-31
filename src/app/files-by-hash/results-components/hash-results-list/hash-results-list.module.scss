@@ -1,0 +1,25 @@
+.results_list {
+    margin-top: 48px;
+
+    padding: 24px 32px;
+    border-radius: 8px;
+
+    background: #27272acc;
+
+    > h2 { margin: 0;}
+    > p { margin-top: 8px; margin-bottom: 24px; }
+}
+
+.results_list_likely,
+.results_list_other {
+    > h3 {
+        margin-top: 32px;
+        margin-bottom: 8px;
+    }
+}
+
+.results_list_content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

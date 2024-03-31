@@ -1,0 +1,86 @@
+.uploaderDisplayWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > dt > h3 {
+        margin: 0;
+        margin-top: 16px;
+        font-size: 1.2rem;
+    }
+}
+
+
+.uploaderDisplayInnerWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 64px;
+    margin: 0;
+}
+
+
+.avatarAndUsernameCombo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.uploaderAvatar {
+    > dt { display: none; }
+    > dd > img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    margin: 0 !important;
+}
+
+
+.usernameAndIdCombo {
+    height: min-content;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.username {
+    margin: 0;
+    font-size: 1.2rem;
+    display: inline-flex;
+    > dt { display: none; }
+    > dd {
+        font-weight: 400;
+    }
+}
+
+
+.memberId {
+    display: inline-flex;
+    margin-top: 0.1rem;
+    > dt { display: none; }
+    > dd {
+        font-size: 0.9rem;
+        &::before { content: '('; }
+        &::after  { content: ')'; }
+        &::before, &::after {
+            margin: 0 -2px;
+            color: #555;
+            font-size: 1rem;
+        }
+        margin-left: 8px;
+        font-family: var(--code-font);
+        font-weight: 600;
+        color: #b8b8b8;
+    }
+}
+
+
+.kudos {
+    margin-top: 8px;
+}
+
+
+.isDeleted {
+    margin-top: 8px;
+}

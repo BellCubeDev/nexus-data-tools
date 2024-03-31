@@ -1,0 +1,33 @@
+.infoText {
+    margin: 16px 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ddd;
+    background-color: #1f4053d0;
+    padding: 12px 24px 12px 20px;
+    border-radius: 16px;
+    width: max-content;
+
+    > svg {
+        margin-right: 12px;
+    }
+
+    &.warn {
+        color: #fff;
+        background-color: #4a2c00d0;
+    }
+
+    &.error {
+        color: #fff;
+        background-color: #4a0000d0;
+    }
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    animation: spinner 3s linear infinite;
+}

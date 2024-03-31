@@ -1,0 +1,17 @@
+dd {
+    margin: 0;
+}
+
+div:has(> dt):has(> dd:last-child:nth-of-type(1):last-of-type) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: max-content;
+    gap: 8px;
+
+    > dt {
+        margin: 0;
+    }
+
+    margin-bottom: 16px;
+}

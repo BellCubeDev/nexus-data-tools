@@ -1,0 +1,17 @@
+@use './vars' as *;
+
+/**
+    @param {percentage} $max-mix-percentage - The maximum percentage of blue in the background color. Must be greater than 25% (enforced)
+*/
+@mixin generic-intractable-item($max-mix-percentage: 85%) {
+    background-color: mix($black, $pure-blue, max($max-mix-percentage, 25%));
+    width: 512px;
+
+    padding: 8px;
+
+    outline: none;
+    border: 3px solid mix($black, $pure-blue, max($max-mix-percentage - 20%, 15%));
+    &:focus { border: 3px solid mix($black, $pure-blue, $max-mix-percentage - 45%); }
+
+    border-radius: 5px;
+}

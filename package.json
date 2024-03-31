@@ -1,0 +1,42 @@
+{
+  "name": "nexus-data-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "module": "es6",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "next lint",
+    "postinstall": "generateAPITypes.ps1"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.9.9",
+    "@apollo/experimental-nextjs-app-support": "^0.9.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/node": "20.2.5",
+    "@types/react": "^18.2.67",
+    "@types/react-dom": "^18.2.22",
+    "bbcode-compiler": "^0.1.5",
+    "client-only": "^0.0.1",
+    "entities": "^4.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.1.4",
+    "exploration": "^1.6.0",
+    "filesize": "^10.1.1",
+    "full-uri-escaper": "^1.0.0",
+    "hash-wasm": "^4.11.0",
+    "next": "^14.1.4",
+    "raw-loader": "^4.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-fontawesome": "^1.7.1",
+    "sass": "^1.72.0",
+    "server-only": "^0.0.1",
+    "typed-graphql-builder": "^4.1.3",
+    "typescript": "^5.4.2"
+  }
+}
