@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "npx serve out",
     "lint": "next lint",
-    "postinstall": "generateAPITypes.ps1"
+    "postinstall": "npx typed-graphql-builder --schema https://api.nexusmods.com/v2/graphql --output './src/nexus-api/GraphQL.ts'"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
