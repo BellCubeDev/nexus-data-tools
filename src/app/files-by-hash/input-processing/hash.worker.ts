@@ -2,21 +2,6 @@
 
 import { createMD5 } from "hash-wasm";
 
-//const md5Hasher = await createMD5();
-//md5Hasher.init();
-//
-//const reader = file.stream().getReader();
-//let done = false;
-//
-//while (!done) {
-//    const { value, done: done_ } = await reader.read();
-//    done = done_;
-//    if (value) md5Hasher.update(value);
-//}
-//
-//reader.releaseLock();
-//return md5Hasher.digest();
-
 const file = await new Promise<File>((resolve) => {
     self.onmessage = (event) => {
         resolve(event.data);
@@ -29,9 +14,11 @@ md5Hasher.init();
 const reader = file.stream().getReader();
 let done = false;
 
+let readPromise = reader.read();
 while (!done) {
-    const { value, done: done_ } = await reader.read();
+    const { value, done: done_ } = await readPromise;
     done = done_;
+    if (!done) readPromise = reader.read();
     if (value) md5Hasher.update(value);
 }
 
