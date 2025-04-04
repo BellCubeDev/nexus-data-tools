@@ -22,17 +22,23 @@ export async function POST(req: NextRequest) {
     const [body1, body2] = res.body.tee();
 
     const readTextResCopy = new Response(body1, res);
-    const json = await readTextResCopy.json();
+    try {
+        const json = await readTextResCopy.json();
 
-    console.log('Proxied Nexus GraphQL request:', req.url, res.status, res.statusText, JSON.stringify(json, null, 4));
+        console.log('Proxied Nexus GraphQL request:', req.url, res.status, res.statusText, JSON.stringify(json, null, 4));
 
-    return NextResponse.json(json, {
-        ...res,
-        headers: {
-            ...res.headers,
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, OPTIONS",
-            "Access-Control-Allow-Headers": "*",
-        },
-    });
+        return NextResponse.json(json, {
+            ...res,
+            headers: {
+                ...res.headers,
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST, OPTIONS",
+                "Access-Control-Allow-Headers": "*",
+            },
+        });
+    } catch (e) {
+        console.error('Failed to parse JSON from Nexus GraphQL API:', req.url, res.status, res.statusText, e);
+        console.log('Response body:', await new Response(body2, res).text());
+        throw e;
+    }
 }

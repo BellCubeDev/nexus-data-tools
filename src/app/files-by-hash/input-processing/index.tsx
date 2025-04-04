@@ -1,4 +1,4 @@
-import { type ApolloClient, type ApolloQueryResult, type QueryOptions } from "@apollo/client";
+import { ApolloError, type ApolloClient, type ApolloQueryResult, type QueryOptions } from "@apollo/client";
 import { SearchForFileResultComponent } from "../results-components";
 
 import { query } from "@/nexus-api/GraphQL";
@@ -105,18 +105,57 @@ export async function searchForFile(client: ApolloClient<object>, setInfoState: 
     } catch (e) {
         if (e instanceof Error) {
             console.error("Error while searching for files", e);
-            return <>
-                <p>Failed to search for files (FATAL):</p>
-                <pre><code>
-                    {e.stack}
-                </code></pre>
-            </>;
+            if (e instanceof ApolloError) {
+                return <>
+                    <p>Failed to search for files (FATAL):</p>
+                    <pre><code>
+                        {e.name} - {e.message}
+
+                        <br />
+                        <br />
+
+                        PROBABLE CAUSE:{' '}
+                        {JSON.stringify(e.cause, null, 4)}
+
+                        <br />
+                        <br />
+
+                        NETWORK ERROR:{' '}
+                        {JSON.stringify(!e.networkError ? null : Object.fromEntries([...Object.entries(Object.getOwnPropertyDescriptors(e.networkError)), ...Object.entries(Object.getOwnPropertyDescriptors(Object.getPrototypeOf(e.networkError)))].map(([k, v]) => [k, v.value])), null, 4)}
+
+                        <br />
+                        <br />
+
+                        GRAPHQL ERRORS:{' '}
+                        {JSON.stringify(e.graphQLErrors, null, 4)}
+
+                        <br />
+                        <br />
+
+                        CLIENT ERRORS:{' '}
+                        {e.clientErrors.length ? e.clientErrors.map(e => e.stack).join("\n") : 'null'}
+
+                        <br />
+                        <br />
+
+                        STACK:{' '}
+                        {e.stack}
+                    </code></pre>
+                </>;
+            } else {
+                return <>
+                    <p>Failed to search for files (FATAL):</p>
+                    <pre><code>
+                        {e.stack}
+                    </code></pre>
+                </>;
+            }
         } else {
             throw e;
         }
     }
 
-    console.log("Got search result", res)
+    console.log("Got search result", res);
 
     return <SearchForFileResultComponent res={res} hashMap={hashMap} setInfoState={setInfoState} />;
 }

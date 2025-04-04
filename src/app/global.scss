@@ -85,7 +85,6 @@ a {
         }
     }
 }
-
 pre, code {
     color: #ddd;
     font-family: var(--code-font);
@@ -93,6 +92,16 @@ pre, code {
     background: #282828;
     border-radius: 5px;
 }
+
+pre {
+    overflow-y: auto;
+    padding: 16px 24px;
+    > code {
+        padding: 0;
+        background: none;
+    }
+}
+
 
 main {
     padding: 32px 48px;
