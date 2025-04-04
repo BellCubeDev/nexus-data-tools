@@ -6,7 +6,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
     poweredByHeader: true,
     reactStrictMode: true,
@@ -20,9 +19,9 @@ const nextConfig = {
     },
 
     experimental: {
-        turbo: {
-        },
-        esmExternals: 'loose',
+        turbo: { },
+        optimizeServerReact: true,
+        reactCompiler: true,
     },
 
     staticPageGenerationTimeout: 600,
@@ -45,6 +44,6 @@ const nextConfig = {
 
         return config;
     },
-};
+} satisfies import('next').NextConfig;
 
 export default nextConfig;

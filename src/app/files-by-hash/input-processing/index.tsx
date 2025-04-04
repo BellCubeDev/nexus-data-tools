@@ -103,13 +103,17 @@ export async function searchForFile(client: ApolloClient<object>, setInfoState: 
             query: getSearchByMD5Query(hashes)
         });
     } catch (e) {
-        if (e instanceof Error) return <>
-            <p>Failed to search for files (FATAL):</p>
-            <pre><code>
-                {e.stack}
-            </code></pre>
-        </>;
-        else throw e;
+        if (e instanceof Error) {
+            console.error("Error while searching for files", e);
+            return <>
+                <p>Failed to search for files (FATAL):</p>
+                <pre><code>
+                    {e.stack}
+                </code></pre>
+            </>;
+        } else {
+            throw e;
+        }
     }
 
     console.log("Got search result", res)

@@ -4,12 +4,17 @@
   "private": true,
   "type": "module",
   "module": "es6",
+  "packageManager": "pnpm@10.2.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
     "lint": "next lint",
-    "postinstall": "npx typed-graphql-builder --schema https://api.nexusmods.com/v2/graphql --output './src/nexus-api/GraphQL.ts'"
+    "prepare": "npx typed-graphql-builder --schema https://api.nexusmods.com/v2/graphql --output './src/nexus-api/GraphQL.ts'"
+  },
+  "peerDependencies": {
+    "@graphql-typed-document-node/core": "*",
+    "graphql-tag": "*"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
@@ -20,23 +25,29 @@
     "@types/node": "20.2.5",
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
+    "babel-plugin-react-compiler": "19.0.0-beta-e993439-20250328",
     "bbcode-compiler": "^0.1.5",
     "client-only": "^0.0.1",
     "entities": "^4.5.0",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "^14.1.4",
     "exploration": "^1.6.0",
     "filesize": "^10.1.1",
     "full-uri-escaper": "^1.0.0",
     "hash-wasm": "^4.11.0",
-    "next": "^14.1.4",
+    "next": "^15.2.4",
     "raw-loader": "^4.0.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-fontawesome": "^1.7.1",
     "sass": "^1.72.0",
     "server-only": "^0.0.1",
     "typed-graphql-builder": "^4.1.3",
-    "typescript": "^5.4.2"
+    "typescript": "~5.4.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
   }
 }

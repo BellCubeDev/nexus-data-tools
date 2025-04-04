@@ -63,7 +63,17 @@ export function SearchForFileResultComponent({res, hashMap, setInfoState}: {res:
                 <span>Got errors while searching for files. Error #{i}:</span>
                 <br />
                 <pre><code>
-                    {e.stack}
+                    MESSAGE:
+                    {e.message}
+
+                    PATH:
+                    {e.path?.join(' -> ') ?? "N/A"}
+
+                    LOCATIONS:
+                    {e.locations?.map(loc => `(${loc.line}:${loc.column})`).join(', ') ?? "N/A"}
+
+                    EXTRA (extensions data):
+                    {JSON.stringify(e.extensions ?? null, null, 4)}
                 </code></pre>
             </div>)}
         </div>}
