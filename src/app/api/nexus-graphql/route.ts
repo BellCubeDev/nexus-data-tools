@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { inspect } from "util";
+import meta from '../../../../package.json';
 
 // proxy https://api.nexusmods.com/v2/graphql
 export const runtime = 'edge';
@@ -9,7 +10,7 @@ export async function POST(req: NextRequest) {
         headers: {
             "Authorization": req.headers.get("Authorization") || '',
             "Content-Type": "application/json",
-            "User-Agent": req.headers.get("User-Agent") || '',
+            "User-Agent": `NexusDataToolsAPIProxy/${meta.version} ${req.headers.get("X-Real-User-Agent") || req.headers.get("User-Agent") || ''}`,
         },
         body: req.body,
         method: "POST",
