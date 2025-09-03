@@ -39,8 +39,9 @@ export async function POST(req: NextRequest) {
         });
     } catch (e) {
         console.error('Failed to parse JSON from Nexus GraphQL API:', req.url, res.status, res.statusText, e);
-        console.log('Response body:', await new Response(body2, res).text());
+        const [loggingBody, returningBody] = body2.tee();
+        console.log('Response body:', await new Response(loggingBody, res).text());
         console.log('Request', req);
-        throw e;
+        return new NextResponse(returningBody, res);
     }
 }
