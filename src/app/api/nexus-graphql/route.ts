@@ -18,6 +18,7 @@ export async function POST(req: NextRequest) {
         duplex: 'half',
     };
 
+    const proxyRequestForLogging = new Request("https://api.nexusmods.com/v2/graphql", requestInfo);
     const proxyRequest = new Request("https://api.nexusmods.com/v2/graphql", requestInfo);
 
     const res = await fetch(proxyRequest);
@@ -46,7 +47,7 @@ export async function POST(req: NextRequest) {
         const [loggingBody, returningBody] = body2.tee();
         console.log('Response body:', await new Response(loggingBody, res).text());
         console.log('Original request', req);
-        console.log('Proxied request', proxyRequest);
+        console.log('Proxied request', proxyRequestForLogging);
         return new NextResponse(returningBody, res);
     }
 }
