@@ -6,7 +6,7 @@ import meta from '../../../../package.json';
 export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
-    const res = await fetch("https://api.nexusmods.com/v2/graphql", {
+    const requestInfo: RequestInit = {
         headers: {
             "Authorization": req.headers.get("Authorization") || '',
             "Content-Type": "application/json",
@@ -16,7 +16,11 @@ export async function POST(req: NextRequest) {
         method: "POST",
         // @ts-ignore - Node says it's needed so it's needed. idk man
         duplex: 'half',
-    });
+    };
+
+    const proxyRequest = new Request("https://api.nexusmods.com/v2/graphql", requestInfo);
+
+    const res = await fetch(proxyRequest);
 
     if (!res.body) throw new Error('No body in response from Nexus GraphQL API');
 
@@ -41,7 +45,8 @@ export async function POST(req: NextRequest) {
         console.error('Failed to parse JSON from Nexus GraphQL API:', req.url, res.status, res.statusText, e);
         const [loggingBody, returningBody] = body2.tee();
         console.log('Response body:', await new Response(loggingBody, res).text());
-        console.log('Request', req);
+        console.log('Original request', req);
+        console.log('Proxied request', proxyRequest);
         return new NextResponse(returningBody, res);
     }
 }
