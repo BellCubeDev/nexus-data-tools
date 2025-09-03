@@ -8,9 +8,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
+    "start": "serve out",
     "lint": "next lint",
-    "prepare": "npx typed-graphql-builder --schema https://api.nexusmods.com/v2/graphql --output './src/nexus-api/GraphQL.ts'"
+    "prepare": "typed-graphql-builder --schema https://api.nexusmods.com/v2/graphql --output './src/nexus-api/GraphQL.ts'"
   },
   "peerDependencies": {
     "@graphql-typed-document-node/core": "*",

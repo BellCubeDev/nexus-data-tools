@@ -6,7 +6,6 @@ export function gameFields(game: Game) {
         game.domainName,
         game.id,
         game.name,
-        game.tileImageUrl,
     ] as const;
     return fields as [...typeof fields];
 }
@@ -21,10 +20,10 @@ export function GameDisplay({game}: {game: GameData}) {
                 <dt>Game Name</dt>
                 <dd>{game.name}</dd>
             </div>
-            {game.tileImageUrl &&  <div className={styles.gamePoster}>
+            <div className={styles.gamePoster}>
                 <dt>Game Poster</dt>
-                <dd><img src={game.tileImageUrl} alt="poster image for the game" /></dd> {/* Memeable alt text, I know */}
-            </div>}
+                <dd><img src={`https://images.nexusmods.com/images/games/v2/${game.id}/tile.jpg`} alt="poster image for the game" /></dd> {/* Memeable alt text, I know */}
+            </div>
             <div className={styles.gameDomainAndIdCombo}>
                 <div className={styles.gameDomainName}>
                     <dt>Game Domain Name</dt>
