@@ -7,7 +7,12 @@ import applicationUA from "@/user-agent";
 import meta from '../../package.json';
 
 function makeClient() {
-    const clientHttpLink = new HttpLink(Object.assign({}, httpLinkOptions, {uri: typeof window === "undefined" ? `http://localhost:${process.env.PORT}/api/nexus-graphql/` : '/api/nexus-graphql/'}));
+    const clientHttpLink = new HttpLink(Object.assign({}, httpLinkOptions, {
+        uri: typeof window === "undefined" ? `http://localhost:${process.env.PORT}/api/nexus-graphql/` : '/api/nexus-graphql/',
+        headers: {
+            'X-Real-User-Agent': `${applicationUA} ApolloClient/${meta.dependencies["@apollo/client"]} ${typeof navigator === 'undefined' ? 'NodeJS' : navigator.userAgent}`,
+        }
+    }));
 
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
@@ -17,9 +22,7 @@ function makeClient() {
                 clientHttpLink,
             ]),
         uri: clientHttpLink.options.uri,
-        headers: {
-            'X-Real-User-Agent': `${applicationUA} ApolloClient/${meta.dependencies["@apollo/client"]} ${typeof navigator === 'undefined' ? 'NodeJS' : navigator.userAgent}`,
-        }
+        headers: clientHttpLink.options.headers,
     });
 }
 
